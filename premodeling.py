@@ -2,7 +2,8 @@ import numpy as np
 import tqdm
 
 from preprocess.text_embedding_mapper import BowFasttextEmbeddingMapper
-from utils.utils import text_stemming, text_normalization, npy_raw_text_data_path, npy_pos_data_path, npy_data_path
+from utils.utils import text_stemming, text_normalization, npy_raw_text_data_path, npy_pos_data_path, npy_data_path, \
+    fast_text_save_path, corpus_path
 
 
 class TextProcess(BowFasttextEmbeddingMapper):
@@ -88,16 +89,23 @@ class TextProcess(BowFasttextEmbeddingMapper):
 
 
 if __name__ == "__main__":
-    ddt = TextProcess(category_id=1,
+    category_id = 1
+    ddt = TextProcess(category_id=category_id,
                       pos_tagging=False,
                       fasttext_mode=False,
                       min_word_rarity=2,
                       trigrams=True)
 
     # ddt.text_process_()
+    # ddt.train_fasttext_skipgram(dim=300,
+    #                             corpus_path=corpus_path(category_id=category_id),
+    #                             output_path=fast_text_save_path(category_id=category_id),
+    #                             wordNgrams=3,
+    #                             minCount=4)
 
     ddt.model_load(category=1)
     # ddt.load_pretrained_fasttext_model()
     query = ddt.query_preprocess('lubię jeść kaczkę')
+
 
     a = 0
