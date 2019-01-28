@@ -67,6 +67,9 @@ class FastTextClass(PreprocessClass):
     def load_fasttext_model(self, path):
         self.fasttext_model = fasttext.load_model(path)
 
+    def load_pretrained_fasttext_model(self):
+        self.fasttext_model = fasttext.load_model(path=wikipedia_fasttext_model())
+
     def predict_fasttext_mean_vector(self, data_words):
         """
 

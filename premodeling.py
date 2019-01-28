@@ -97,6 +97,7 @@ if __name__ == "__main__":
     # ddt.text_process_()
 
     ddt.model_load(category=1)
+    # ddt.load_pretrained_fasttext_model()
     query = ddt.query_preprocess('lubię jeść kaczkę')
 
     a = 0
